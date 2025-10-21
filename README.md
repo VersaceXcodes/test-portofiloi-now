@@ -1,2 +1,3 @@
-# test-portofiloi-now
-Project test-portofiloi-now generated.
+app generated from cofounder/boilerplate
+
+instructions here on how to start api and frontend , whether in parallel or separately

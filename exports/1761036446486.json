@@ -1,0 +1,15 @@
+{
+  "timestamp": 1761036446486,
+  "operation": {
+    "id": "settings:config:package"
+  },
+  "projectId": "test-portofiloi-now",
+  "files": [
+    {
+      "path": "/mnt/data/test-portofiloi-now/vitereact/package.json",
+      "type": "text",
+      "size": 3125,
+      "dependencies": true
+    }
+  ]
+}

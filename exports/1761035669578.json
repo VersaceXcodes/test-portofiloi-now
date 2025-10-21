@@ -1,0 +1,15 @@
+{
+  "timestamp": 1761035669578,
+  "operation": {
+    "id": "db:postgres"
+  },
+  "projectId": "test-portofiloi-now",
+  "files": [
+    {
+      "path": "/mnt/data/test-portofiloi-now/backend/db.sql",
+      "type": "text",
+      "size": 7440,
+      "dependencies": false
+    }
+  ]
+}

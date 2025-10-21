@@ -1,0 +1,15 @@
+{
+  "timestamp": 1761036049035,
+  "operation": {
+    "id": "backend:server:main"
+  },
+  "projectId": "test-portofiloi-now",
+  "files": [
+    {
+      "path": "/mnt/data/test-portofiloi-now/backend/server.ts",
+      "type": "text",
+      "size": 53149,
+      "dependencies": false
+    }
+  ]
+}

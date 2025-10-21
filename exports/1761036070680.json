@@ -1,0 +1,21 @@
+{
+  "timestamp": 1761036070680,
+  "operation": {
+    "id": "settings:config:package"
+  },
+  "projectId": "test-portofiloi-now",
+  "files": [
+    {
+      "path": "/mnt/data/test-portofiloi-now/backend/package.json",
+      "type": "text",
+      "size": 1425,
+      "dependencies": true
+    },
+    {
+      "path": "/mnt/data/test-portofiloi-now/backend/.env",
+      "type": "text",
+      "size": 263,
+      "dependencies": false
+    }
+  ]
+}

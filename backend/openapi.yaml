@@ -1,0 +1,808 @@
+|-
+openapi: 3.0.0
+info:
+  title: Portfolio Platform API
+  version: 1.0.0
+  description: API for Portfolio Platform
+servers:
+  - url: http://localhost:3000/api
+    description: Development server
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    # User Schemas
+    User:
+      type: object
+      properties:
+        user_id:
+          type: string
+        email:
+          type: string
+          format: email
+        full_name:
+          type: string
+        profile_pic_url:
+          type: string
+          format: uri
+          nullable: true
+        bio:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        last_login:
+          type: string
+          format: date-time
+          nullable: true
+        role:
+          type: string
+          enum: [user, admin]
+      required:
+        - user_id
+        - email
+        - full_name
+        - created_at
+        - role
+
+    # Project Schemas
+    Project:
+      type: object
+      properties:
+        project_id:
+          type: string
+        title:
+          type: string
+        slug:
+          type: string
+        featured_image:
+          type: string
+          format: uri
+        category:
+          type: string
+        excerpt:
+          type: string
+        content:
+          type: string
+        client:
+          type: string
+          nullable: true
+        technologies:
+          type: array
+          items:
+            type: string
+          nullable: true
+          default: []
+        project_url:
+          type: string
+          format: uri
+          nullable: true
+        project_date:
+          type: string
+          format: date
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        user_id:
+          type: string
+      required:
+        - project_id
+        - title
+        - slug
+        - featured_image
+        - category
+        - excerpt
+        - content
+        - project_date
+        - created_at
+        - updated_at
+        - user_id
+
+    # Gallery Image Schemas
+    GalleryImage:
+      type: object
+      properties:
+        image_id:
+          type: string
+        project_id:
+          type: string
+        image_url:
+          type: string
+          format: uri
+        caption:
+          type: string
+          nullable: true
+        sort_order:
+          type: integer
+      required:
+        - image_id
+        - project_id
+        - image_url
+        - sort_order
+
+    # Skill Schemas
+    Skill:
+      type: object
+      properties:
+        skill_id:
+          type: string
+        name:
+          type: string
+        category:
+          type: string
+          nullable: true
+        proficiency:
+          type: integer
+          minimum: 0
+          maximum: 100
+          nullable: true
+      required:
+        - skill_id
+        - name
+
+    # Experience Schemas
+    Experience:
+      type: object
+      properties:
+        experience_id:
+          type: string
+        user_id:
+          type: string
+        title:
+          type: string
+        company:
+          type: string
+        description:
+          type: string
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+          nullable: true
+        current:
+          type: boolean
+          default: false
+        location:
+          type: string
+          nullable: true
+      required:
+        - experience_id
+        - user_id
+        - title
+        - company
+        - description
+        - start_date
+        - current
+
+    # Education Schemas
+    Education:
+      type: object
+      properties:
+        education_id:
+          type: string
+        user_id:
+          type: string
+        institution:
+          type: string
+        degree:
+          type: string
+        field_of_study:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        start_year:
+          type: integer
+        end_year:
+          type: integer
+          nullable: true
+        current:
+          type: boolean
+          default: false
+      required:
+        - education_id
+        - user_id
+        - institution
+        - degree
+        - start_year
+        - current
+
+    # Contact Message Schemas
+    ContactMessage:
+      type: object
+      properties:
+        message_id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        subject:
+          type: string
+          nullable: true
+        message:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        read:
+          type: boolean
+          default: false
+      required:
+        - message_id
+        - name
+        - email
+        - message
+        - created_at
+        - read
+
+    # Social Link Schemas
+    SocialLink:
+      type: object
+      properties:
+        social_id:
+          type: string
+        user_id:
+          type: string
+        platform:
+          type: string
+        url:
+          type: string
+          format: uri
+        display_text:
+          type: string
+          nullable: true
+      required:
+        - social_id
+        - user_id
+        - platform
+        - url
+
+    # Resume Schemas
+    Resume:
+      type: object
+      properties:
+        resume_id:
+          type: string
+        user_id:
+          type: string
+        file_url:
+          type: string
+          format: uri
+        file_name:
+          type: string
+        file_size:
+          type: integer
+        uploaded_at:
+          type: string
+          format: date-time
+        primary_resume:
+          type: boolean
+          default: true
+      required:
+        - resume_id
+        - user_id
+        - file_url
+        - file_name
+        - file_size
+        - uploaded_at
+        - primary_resume
+
+    # Error Response Schema
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: string
+        timestamp:
+          type: string
+          format: date-time
+
+    # API Response Schemas
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+        total_pages:
+          type: integer
+        current_page:
+          type: integer
+
+    # Query Parameter Schemas
+    ProjectQuery:
+      type: object
+      properties:
+        search:
+          type: string
+          required: false
+        category:
+          type: string
+          required: false
+        page:
+          type: integer
+          default: 1
+        limit:
+          type: integer
+          default: 10
+          maximum: 100
+        sort_by:
+          type: string
+          enum: [title, project_date, created_at]
+          default: created_at
+        sort_order:
+          type: string
+          enum: [asc, desc]
+          default: desc
+
+paths:
+  # Authentication Endpoints
+  /auth/register:
+    post:
+      tags: [Authentication]
+      summary: Register a new user account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                full_name:
+                  type: string
+                bio:
+                  type: string
+                  nullable: true
+                role:
+                  type: string
+                  enum: [user, admin]
+                  default: user
+              required: [email, full_name, password] 
+      responses:
+        '200':
+          description: User account successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+                  token:
+                    type: string
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '409':
+          description: Email already exists
+
+  /auth/login:
+    post:
+      tags: [Authentication]
+      summary: Login with existing credentials
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+              required: [email, password]
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+                  token:
+                    type: string
+        '401':
+          description: Invalid credentials
+        '404':
+          description: User not found
+
+  # User Management
+  /users:
+    get:
+      tags: [Users]
+      summary: Get all users (admin only)
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - name: role
+          in: query
+          schema:
+            type: string
+            enum: [user, admin]
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10
+      response:
+        '200':
+          contents:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Pagination'
+                  - properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/User'
+
+  /users/{user_id}:
+    get:
+      tags: [Users]
+      summary: Get a user by ID
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  # Project Endpoints
+  /projects:
+    get:
+      tags: [Projects]
+      summary: Get a list of all projects
+      parameters:
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/category'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/sortBy'
+        - $ref: '#/components/parameters/sortOrder'
+      responses:
+        '200':
+          description: Successfully retrieved projects
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Project'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+    post:
+      tags: [Projects]
+      summary: Create a new project
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+      responses:
+        '201':
+          description: Project created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+
+  /projects/{project_id}:
+    get:
+      tags: [Projects]
+      summary: Get project by ID
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      patch:
+        tags: [Projects]
+        summary: Update project details
+        security: [{ bearerAuth: [] }]
+        parameters:
+          - name: project_id
+            in: path
+            required: true
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        responses:
+          '200':
+            description: Project updated successfully
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Project'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+
+  /projects/slug/{slug}:
+    get:
+      tags: [Projects]
+      summary: Get project by slug
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Gallery Images
+  /projects/{project_id}/gallery:
+    get:
+      tags: [Projects]
+      summary: Get project gallery images
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GalleryImage'
+    post:
+      tags: [Projects]
+      summary: Add image to project gallery
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+                caption:
+                  type: string
+      responses:
+        '201':
+          description: Image added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GalleryImage'
+
+  # Contact Messages
+  /contact:
+    post:
+      tags: [Contact]
+      summary: Send a contact message
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                subject:
+                  type: string
+                message:
+                  type: string
+              required: [name, email, message]
+      responses:
+        '200':
+          description: Message sent successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactMessage'
+
+  # Resume Endpoints
+  /users/{user_id}/resume:
+    get:
+      tags: [Resumes]
+      summary: Get user's primary resume
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+        - name: include_work_history
+          in: query
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resume'
+
+  /users/{user_id}/resume/download:
+    get:
+      tags: [Resumes]
+      summary: Download user's resume
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+      responses:
+        '200':
+          description: Resume file download
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+
+components:
+  parameters:
+    search:
+      name: search
+      in: query
+      description: Search term
+      schema:
+        type: string
+    category:
+      name: category
+      in: query
+      description: Filter by category
+      schema:
+        type: string
+    page:
+      name: page
+      in: query
+      description: Page number
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    limit:
+      name: limit
+      in: query
+      description: Results per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+    sortBy:
+      name: sortBy
+      in: query
+      description: Property to sort by
+      schema:
+        type: string
+        default: created_at
+    sortOrder:
+      name: sortOrder
+      in: query
+      description: Sort order (asc/desc)
+      schema:
+        type: string
+        default: desc
+        enum: [asc, desc]
+
+  responses:
+    BadRequestError:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    UnauthorizedError:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Conflict:
+      description: Resource Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+tags:
+  - name: Authentication
+    description: User authentication and authorization
+  - name: Users
+    description: User management
+  - name: Projects
+    description: Project management
+  - name: Contact
+    description: Contact message handling
+  - name: Resumes
+    description: Resume management
+  - name: Administration
+    description: Admin-only endpoints
+
+security:
+  - bearerAuth: []

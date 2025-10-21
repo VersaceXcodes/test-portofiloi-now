@@ -1,0 +1,15 @@
+{
+  "timestamp": 1761035831004,
+  "operation": {
+    "id": "backend:specifications:openapi"
+  },
+  "projectId": "test-portofiloi-now",
+  "files": [
+    {
+      "path": "/mnt/data/test-portofiloi-now/backend/openapi.yaml",
+      "type": "text",
+      "size": 18677,
+      "dependencies": false
+    }
+  ]
+}

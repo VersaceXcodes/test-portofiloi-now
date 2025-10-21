@@ -1,0 +1,21 @@
+{
+  "timestamp": 1761036115936,
+  "operation": {
+    "id": "backend:tests:main"
+  },
+  "projectId": "test-portofiloi-now",
+  "files": [
+    {
+      "path": "/mnt/data/test-portofiloi-now/backend/server.test.ts",
+      "type": "text",
+      "size": 5729,
+      "dependencies": false
+    },
+    {
+      "path": "/mnt/data/test-portofiloi-now/backend/jest.config.ts",
+      "type": "text",
+      "size": 799,
+      "dependencies": false
+    }
+  ]
+}

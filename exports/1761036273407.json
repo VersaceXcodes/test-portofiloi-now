@@ -1,0 +1,19 @@
+{
+  "timestamp": 1761036273407,
+  "operation": {
+    "id": "webapp:react:root",
+    "refs": {
+      "id": "app",
+      "version": "1761036241389"
+    }
+  },
+  "projectId": "test-portofiloi-now",
+  "files": [
+    {
+      "path": "/mnt/data/test-portofiloi-now/vitereact/src/App.tsx",
+      "type": "text",
+      "size": 4529,
+      "dependencies": false
+    }
+  ]
+}

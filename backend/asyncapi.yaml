@@ -1,0 +1,269 @@
+asyncapi: 2.6.0
+info:
+  title: Portfolio Platform Realtime Events API
+  version: 1.0.0
+  description: Realtime events for portfolio platform
+servers:
+  production:
+    url: ws://api.portfolio.com
+    protocol: ws
+  development:
+    url: ws://localhost:3000
+    protocol: ws
+channels:
+  /projects:
+    subscribe:
+      operationId: subscribeToProjects
+      summary: Subscribe to projects updates
+      message:
+        oneOf:
+          - $ref: "#/components/messages/ProjectCreated"
+          - $ref: "#/components/messages/ProjectUpdated"
+          - $ref: "#/components/messages/ProjectDeleted"
+  /projects/{project_id}:
+    parameters:
+      - $ref: "#/components/parameters/ProjectId"
+    subscribe:
+      operationId: subscribeToProjectEvents
+      summary: Subscribe to specific project events
+      message:
+        oneOf:
+          - $ref: "#/components/messages/ProjectUpdated"
+          - $ref: "#/components/messages/ImageAdded"
+          - $ref: "#/components/messages/ImageRemoved"
+  /users:
+    subscribe:
+      operationId: subscribeToUserEvents
+      summary: Subscribe to user-related events
+      message:
+        oneOf:
+          - $ref: "#/components/messages/UserProfileUpdated"
+          - $ref: "#/components/messages/ResumeUpdated"
+  /contact:
+    subscribe:
+      operationId: subscribeToContactEvents
+      summary: Admin notifications for contact messages
+      message:
+        $ref: "#/components/messages/MessageReceived"
+  /admin/dashboard:
+    subscribe:
+      operationId: subscribeToAdminDashboard
+      summary: Admin dashboard updates
+      message:
+        oneOf:
+          - $ref: "#/components/messages/VisitorStats"
+          - $ref: "#/components/messages/NewMessageNotification"
+components:
+  messages:
+    ProjectCreated:
+      payload:
+        $ref: "#/components/schemas/Project"
+      name: project.created
+      summary: Published when a new project is created
+    ProjectUpdated:
+      payload:
+        $ref: "#/components/schemas/Project"
+        description: The updated project data
+      name: project.updated
+    ProjectDeleted:
+      payload:
+        type: string
+        description: ID of the deleted project
+      name: project.deleted
+    ProjectStatusChanged:
+      payload:
+        type: object
+        properties:
+          project_id:
+            type: string
+          new_status:
+            type: string
+      name: project.status.updated
+    ImageAdded:
+      payload:
+        $ref: "#/components/schemas/ProjectImage"
+      name: project.image.added
+    ImageRemoved:
+      payload:
+        type: object
+        properties:
+          project_id:
+            type: string
+          image_id:
+            type: string
+      name: project.image.removed
+    ProjectCategoryUpdated:
+      payload:
+        type: object
+        properties:
+          project_id:
+            type: string
+          old_category:
+            type: string
+          new_category:
+            type: string
+      name: project.category.updated
+    UserProfileUpdated:
+      payload:
+        $ref: "#/components/schemas/User"
+      name: user.updated
+    ResumeUpdated:
+      payload:
+        type: object
+        properties:
+          user_id:
+            type: string
+          resume_url:
+            type: string
+      name: user.resume.updated
+    MessageReceived:
+      payload:
+        type: object
+        properties:
+          message_id:
+            type: string
+          name:
+            type: string
+          email:
+            type: string
+          subject:
+            type: string
+            nullable: true
+          preview:
+            type: string
+      name: contact.new_message
+      description: Admin notification for new contact messages
+    VisitorStats:
+      payload:
+        type: object
+        required:
+          - timestamp
+          - active_visitors
+        properties:
+          timestamp:
+            type: string
+            format: date-time
+          active_visitors:
+            type: integer
+          popular_projects:
+            type: array
+            items:
+              $ref: "#/components/schemas/Project"
+      name: analytics.visitors.update
+  schemas:
+    Project:
+      required:
+        - project_id
+        - title
+        - slug
+        - featured_image
+        - category
+      type: object
+      properties:
+        project_id:
+          type: string
+        title:
+          type: string
+        slug:
+          type: string
+        featured_image:
+          type: string
+          format: uri
+        category:
+          type: string
+        excerpt:
+          type: string
+        content:
+          type: string
+        client:
+          type: string
+          nullable: true
+        technologies:
+          type: array
+          items:
+            type: string
+          default: []
+        project_url:
+          type: string
+          format: uri
+          nullable: true
+        project_date:
+          type: string
+          format: date
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        user_id:
+          type: string
+    User:
+      required:
+        - user_id
+        - email
+        - full_name
+        - role
+      type: object
+      properties:
+        user_id:
+          type: string
+        email:
+          type: string
+          format: email
+        full_name:
+          type: string
+        profile_pic_url:
+          type: string
+          format: uri
+          nullable: true
+        bio:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        last_login:
+          type: string
+          format: date-time
+          nullable: true
+        role:
+          type: string
+          enum:
+            - admin
+            - user
+    ProjectImage:
+      required:
+        - image_id
+        - project_id
+        - image_url
+      type: object
+      properties:
+        image_id:
+          type: string
+        project_id:
+          type: string
+        image_url:
+          type: string
+          format: uri
+        caption:
+          type: string
+          nullable: true
+        sort_order:
+          type: integer
+          minimum: 0
+          default: 0
+  parameters:
+    ProjectId:
+      description: Unique identifier of the project
+      location: $message.payload.project_id
+      schema:
+        type: string
+      required: true
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - bearerAuth: []

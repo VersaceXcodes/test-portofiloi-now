@@ -1,0 +1,15 @@
+{
+  "timestamp": 1761035784307,
+  "operation": {
+    "id": "backend:specifications:asyncapi"
+  },
+  "projectId": "test-portofiloi-now",
+  "files": [
+    {
+      "path": "/mnt/data/test-portofiloi-now/backend/asyncapi.yaml",
+      "type": "text",
+      "size": 6557,
+      "dependencies": false
+    }
+  ]
+}

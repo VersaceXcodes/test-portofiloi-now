@@ -1,0 +1,15 @@
+{
+  "timestamp": 1761035750515,
+  "operation": {
+    "id": "db:schemas:zod"
+  },
+  "projectId": "test-portofiloi-now",
+  "files": [
+    {
+      "path": "/mnt/data/test-portofiloi-now/backend/schema.ts",
+      "type": "text",
+      "size": 15141,
+      "dependencies": false
+    }
+  ]
+}

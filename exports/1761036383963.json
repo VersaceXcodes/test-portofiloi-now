@@ -1,0 +1,19 @@
+{
+  "timestamp": 1761036383963,
+  "operation": {
+    "id": "webapp:react:views",
+    "refs": {
+      "id": "UV_Resume",
+      "version": "latest"
+    }
+  },
+  "projectId": "test-portofiloi-now",
+  "files": [
+    {
+      "path": "/mnt/data/test-portofiloi-now/vitereact/src/components/views/UV_Resume.tsx",
+      "type": "text",
+      "size": 17188,
+      "dependencies": false
+    }
+  ]
+}

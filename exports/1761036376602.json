@@ -1,0 +1,19 @@
+{
+  "timestamp": 1761036376602,
+  "operation": {
+    "id": "webapp:react:views",
+    "refs": {
+      "id": "GV_CookieConsent",
+      "version": "1761036274399"
+    }
+  },
+  "projectId": "test-portofiloi-now",
+  "files": [
+    {
+      "path": "/mnt/data/test-portofiloi-now/vitereact/src/components/views/GV_CookieConsent.tsx",
+      "type": "text",
+      "size": 14473,
+      "dependencies": false
+    }
+  ]
+}

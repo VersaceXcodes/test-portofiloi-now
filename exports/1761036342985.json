@@ -1,0 +1,19 @@
+{
+  "timestamp": 1761036342985,
+  "operation": {
+    "id": "webapp:react:views",
+    "refs": {
+      "id": "GV_Header",
+      "version": "1761036274390"
+    }
+  },
+  "projectId": "test-portofiloi-now",
+  "files": [
+    {
+      "path": "/mnt/data/test-portofiloi-now/vitereact/src/components/views/GV_Header.tsx",
+      "type": "text",
+      "size": 8736,
+      "dependencies": false
+    }
+  ]
+}

@@ -9,14 +9,14 @@ npm error code ERESOLVE
 npm error ERESOLVE unable to resolve dependency tree
 npm error
 npm error While resolving: conductor@0.0.0
-npm error Found: tailwindcss@undefined
-npm error node_modules/tailwindcss
-npm error   dev tailwindcss@"^3.4.8" from the root project
+npm error Found: react@18.3.1
+npm error node_modules/react
+npm error   react@"^18.3.1" from the root project
 npm error
 npm error Could not resolve dependency:
-npm error peer tailwindcss@">=3.0.0 || insiders" from tailwindcss-animate@1.0.7
-npm error node_modules/tailwindcss-animate
-npm error   tailwindcss-animate@"^1.0.7" from the root project
+npm error peer react@"^19.0.0" from react-leaflet@5.0.0
+npm error node_modules/react-leaflet
+npm error   react-leaflet@"*" from the root project
 npm error
 npm error Fix the upstream dependency conflict, or retry
 npm error this command with --force or --legacy-peer-deps
@@ -24,8 +24,8 @@ npm error to accept an incorrect (and potentially broken) dependency resolution.
 npm error
 npm error
 npm error For a full report see:
-npm error /root/.npm/_logs/2025-10-22T15_34_26_856Z-eresolve-report.txt
-npm error A complete log of this run can be found in: /root/.npm/_logs/2025-10-22T15_34_26_856Z-debug-0.log
+npm error /root/.npm/_logs/2025-10-22T15_34_33_001Z-eresolve-report.txt
+npm error A complete log of this run can be found in: /root/.npm/_logs/2025-10-22T15_34_33_001Z-debug-0.log
 
 
 ## Validation Context:
@@ -35,7 +35,7 @@ npm error A complete log of this run can be found in: /root/.npm/_logs/2025-10-2
 - Previous failures for this step: 2
 
 ## Project Memory Summary:
-- Total validation attempts: 16
+- Total validation attempts: 17
 - Common issues encountered: Install Dependencies validation failure (persistent)
 - Known dependencies: @hookform/resolvers, @radix-ui/react-accordion, @radix-ui/react-alert-dialog, @radix-ui/react-aspect-ratio, @radix-ui/react-avatar, @radix-ui/react-checkbox, @radix-ui/react-collapsible, @radix-ui/react-context-menu, @radix-ui/react-dialog, @radix-ui/react-dropdown-menu
 - Missing dependencies: None
@@ -154,8 +154,8 @@ PROTECTED DIRECTORIES (DO NOT MODIFY):
 
 
 ## Previous Validation Failures for Install Dependencies:
-- 3:33:47 PM: 
 - 3:34:36 PM: 
+- 3:34:46 PM: 
 
 ## Your Task:
 1. **Analyze the Error**: Understand what specifically went wrong in the Install Dependencies step

@@ -1,19 +1,101 @@
-VALIDATION FAILURE - Frontend TypeScript Compilation (Attempt 1/100)
+VALIDATION FAILURE - Frontend TypeScript Compilation (Attempt 2/100)
 
 The project validation failed at the "Frontend TypeScript Compilation" step. You need to analyze the error and fix it.
 
 ## Error Details:
-npm warn exec The following package was not found and will be installed: tsc@2.0.4
+src/App.tsx(1,17): error TS6133: 'useEffect' is declared but its value is never read.
+src/components/views/GV_ContactModal.tsx(32,57): error TS2339: Property 'isContactModalOpen' does not exist on type 'Store'.
+src/components/views/GV_ContactModal.tsx(33,56): error TS2339: Property 'closeContactModal' does not exist on type 'Store'.
+src/components/views/GV_CookieConsent.tsx(53,39): error TS2559: Type '(prefs: CookiePreferences) => Promise<any>' has no properties in common with type 'UseMutationOptions<unknown, Error, void, unknown>'.
+src/components/views/GV_CookieConsent.tsx(106,5): error TS2769: No overload matches this call.
+  Overload 1 of 3, '(options: DefinedInitialDataOptions<unknown, Error, unknown, string[]>, queryClient?: QueryClient | undefined): DefinedUseQueryResult<unknown, Error>', gave the following error.
+    Object literal may only specify known properties, and 'onSuccess' does not exist in type 'DefinedInitialDataOptions<unknown, Error, unknown, string[]>'.
+  Overload 2 of 3, '(options: UndefinedInitialDataOptions<any, Error, any, string[]>, queryClient?: QueryClient | undefined): UseQueryResult<any, Error>', gave the following error.
+    Object literal may only specify known properties, and 'onSuccess' does not exist in type 'UndefinedInitialDataOptions<any, Error, any, string[]>'.
+  Overload 3 of 3, '(options: UseQueryOptions<any, Error, any, string[]>, queryClient?: QueryClient | undefined): UseQueryResult<any, Error>', gave the following error.
+    Object literal may only specify known properties, and 'onSuccess' does not exist in type 'UseQueryOptions<any, Error, any, string[]>'.
+src/components/views/GV_CookieConsent.tsx(144,30): error TS2345: Argument of type '{ necessary: boolean; analytics: boolean; performance: boolean; marketing: boolean; customization: boolean; }' is not assignable to parameter of type 'void'.
+src/components/views/GV_CookieConsent.tsx(336,47): error TS2339: Property 'isLoading' does not exist on type 'UseMutationResult<unknown, Error, void, unknown>'.
+  Property 'isLoading' does not exist on type 'Override<MutationObserverIdleResult<unknown, Error, void, unknown>, { mutate: UseMutateFunction<unknown, Error, void, unknown>; }> & { ...; }'.
+src/components/views/GV_CookieConsent.tsx(339,38): error TS2339: Property 'isLoading' does not exist on type 'UseMutationResult<unknown, Error, void, unknown>'.
+  Property 'isLoading' does not exist on type 'Override<MutationObserverIdleResult<unknown, Error, void, unknown>, { mutate: UseMutateFunction<unknown, Error, void, unknown>; }> & { ...; }'.
+src/components/views/UV_About.tsx(4,10): error TS6133: 'useQuery' is declared but its value is never read.
+src/components/views/UV_About.tsx(6,78): error TS2307: Cannot find module '@/schemas/zod' or its corresponding type declarations.
+src/components/views/UV_About.tsx(7,27): error TS6133: 'Experience' is declared but its value is never read.
+src/components/views/UV_About.tsx(7,44): error TS6133: 'Education' is declared but its value is never read.
+src/components/views/UV_About.tsx(7,60): error TS6133: 'Resume' is declared but its value is never read.
+src/components/views/UV_About.tsx(7,74): error TS2307: Cannot find module '@/schemas/zod' or its corresponding type declarations.
+src/components/views/UV_About.tsx(8,1): error TS6133: 'Spinner' is declared but its value is never read.
+src/components/views/UV_About.tsx(8,25): error TS2307: Cannot find module '@/components/ui/spinner' or its corresponding type declarations.
+src/components/views/UV_About.tsx(240,28): error TS18046: 'skills' is of type 'unknown'.
+src/components/views/UV_About.tsx(291,47): error TS6133: 'index' is declared but its value is never read.
+src/components/views/UV_Contact.tsx(3,1): error TS6133: 'Link' is declared but its value is never read.
+src/components/views/UV_Contact.tsx(11,49): error TS2307: Cannot find module '@/lib/validations/contact' or its corresponding type declarations.
+src/components/views/UV_Contact.tsx(37,9): error TS2322: Type '{ url: string; attribution: string; }' is not assignable to type 'IntrinsicAttributes & TileLayerProps & RefAttributes<LeafletTileLayer>'.
+  Property 'attribution' does not exist on type 'IntrinsicAttributes & TileLayerProps & RefAttributes<LeafletTileLayer>'.
+src/components/views/UV_Contact.tsx(61,10): error TS6133: 'isSuccess' is declared but its value is never read.
+src/components/views/UV_Contact.tsx(76,5): error TS2559: Type '(formData: any) => Promise<any>' has no properties in common with type 'UseMutationOptions<unknown, Error, void, unknown>'.
+src/components/views/UV_Contact.tsx(117,49): error TS2304: Cannot find name 'z'.
+src/components/views/UV_Contact.tsx(122,28): error TS2304: Cannot find name 'z'.
+src/components/views/UV_Contact.tsx(123,52): error TS18046: 'error' is of type 'unknown'.
+src/components/views/UV_Contact.tsx(151,28): error TS2304: Cannot find name 'z'.
+src/components/views/UV_Contact.tsx(152,24): error TS18046: 'error' is of type 'unknown'.
+src/components/views/UV_Contact.tsx(175,11): error TS2322: Type '{ children: Element; center: [number, number]; zoom: number; className: string; zoomControl: boolean; scrollWheelZoom: boolean; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<LeafletMap>'.
+  Property 'center' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<LeafletMap>'.
+src/components/views/UV_Contact.tsx(404,49): error TS2339: Property 'isLoading' does not exist on type 'UseMutationResult<unknown, Error, void, unknown>'.
+  Property 'isLoading' does not exist on type 'Override<MutationObserverIdleResult<unknown, Error, void, unknown>, { mutate: UseMutateFunction<unknown, Error, void, unknown>; }> & { ...; }'.
+src/components/views/UV_Contact.tsx(406,41): error TS2339: Property 'isLoading' does not exist on type 'UseMutationResult<unknown, Error, void, unknown>'.
+  Property 'isLoading' does not exist on type 'Override<MutationObserverIdleResult<unknown, Error, void, unknown>, { mutate: UseMutateFunction<unknown, Error, void, unknown>; }> & { ...; }'.
+src/components/views/UV_Contact.tsx(409,40): error TS2339: Property 'isLoading' does not exist on type 'UseMutationResult<unknown, Error, void, unknown>'.
+  Property 'isLoading' does not exist on type 'Override<MutationObserverIdleResult<unknown, Error, void, unknown>, { mutate: UseMutateFunction<unknown, Error, void, unknown>; }> & { ...; }'.
+src/components/views/UV_Dashboard.tsx(9,50): error TS2339: Property 'authentication_state' does not exist on type 'Store'.
+src/components/views/UV_Dashboard.tsx(10,49): error TS2339: Property 'logout_user' does not exist on type 'Store'.
+src/components/views/UV_Homepage.tsx(5,86): error TS2307: Cannot find module './icons' or its corresponding type declarations.
+src/components/views/UV_Homepage.tsx(115,13): error TS18047: 'stat.element' is possibly 'null'.
+src/components/views/UV_Login.tsx(14,48): error TS2339: Property 'authentication_state' does not exist on type 'Store'.
+src/components/views/UV_Login.tsx(15,51): error TS2339: Property 'authentication_state' does not exist on type 'Store'.
+src/components/views/UV_Login.tsx(16,48): error TS2339: Property 'login_user' does not exist on type 'Store'.
+src/components/views/UV_Login.tsx(17,51): error TS2339: Property 'register_user' does not exist on type 'Store'.
+src/components/views/UV_Login.tsx(18,53): error TS2339: Property 'clear_auth_error' does not exist on type 'Store'.
+src/components/views/UV_Portfolio.tsx(5,30): error TS2307: Cannot find module '@/store/types' or its corresponding type declarations.
+src/components/views/UV_Portfolio.tsx(6,36): error TS2307: Cannot find module '@/schemas/project' or its corresponding type declarations.
+src/components/views/UV_Portfolio.tsx(10,11): error TS6196: 'CategoryFilter' is declared but never used.
+src/components/views/UV_ProjectDetail.tsx(10,51): error TS2307: Cannot find module '@/schemas/project' or its corresponding type declarations.
+src/components/views/UV_Resume.tsx(2,20): error TS6133: 'useMutation' is declared but its value is never read.
+src/components/views/UV_Resume.tsx(5,1): error TS6133: 'useNavigate' is declared but its value is never read.
+src/components/views/UV_Resume.tsx(6,46): error TS2307: Cannot find module '@/types/zod-schemas' or its corresponding type declarations.
+src/components/views/UV_Resume.tsx(9,60): error TS6133: 'FiPhone' is declared but its value is never read.
+src/components/views/UV_Resume.tsx(57,5): error TS2769: No overload matches this call.
+  Overload 1 of 3, '(options: DefinedInitialDataOptions<unknown, Error, unknown, any[]>, queryClient?: QueryClient | undefined): DefinedUseQueryResult<unknown, Error>', gave the following error.
+    Object literal may only specify known properties, and 'onError' does not exist in type 'DefinedInitialDataOptions<unknown, Error, unknown, any[]>'.
+  Overload 2 of 3, '(options: UndefinedInitialDataOptions<any, Error, any, any[]>, queryClient?: QueryClient | undefined): UseQueryResult<any, Error>', gave the following error.
+    Object literal may only specify known properties, and 'onError' does not exist in type 'UndefinedInitialDataOptions<any, Error, any, any[]>'.
+  Overload 3 of 3, '(options: UseQueryOptions<any, Error, any, any[]>, queryClient?: QueryClient | undefined): UseQueryResult<any, Error>', gave the following error.
+    Object literal may only specify known properties, and 'onError' does not exist in type 'UseQueryOptions<any, Error, any, any[]>'.
+src/components/views/UV_Resume.tsx(63,36): error TS2339: Property 'experiences' does not exist on type '{}'.
+src/components/views/UV_Resume.tsx(64,45): error TS2339: Property 'education' does not exist on type '{}'.
+src/components/views/UV_Resume.tsx(64,69): error TS2339: Property 'education' does not exist on type '{}'.
+src/components/views/UV_Resume.tsx(65,42): error TS2339: Property 'skills' does not exist on type '{}'.
+src/components/views/UV_Resume.tsx(65,63): error TS2339: Property 'skills' does not exist on type '{}'.
+src/components/views/UV_Resume.tsx(72,22): error TS2339: Property 'resume_url' does not exist on type '{}'.
+src/components/views/UV_Resume.tsx(77,28): error TS2339: Property 'resume_url' does not exist on type '{}'.
+src/components/views/UV_Resume.tsx(105,9): error TS6133: 'ErrorDisplay' is declared but its value is never read.
+src/components/views/UV_Resume.tsx(279,27): error TS6133: 'isFirst' is declared but its value is never read.
+src/store/main.tsx(3,30): error TS6196: 'ContactMessage' is declared but never used.
+src/store/main.tsx(3,66): error TS2307: Cannot find module './types' or its corresponding type declarations.
+src/store/main.tsx(260,11): error TS2551: Property 'filterProjects' does not exist on type 'Store'. Did you mean 'filteredProjects'?
+src/store/main.tsx(266,11): error TS2551: Property 'filterProjects' does not exist on type 'Store'. Did you mean 'filteredProjects'?
+src/store/main.tsx(313,5): error TS2554: Expected 1 arguments, but got 2.
 
 
 ## Validation Context:
 - Step: Frontend TypeScript Compilation
 - Working Directory: /app/vitereact
-- Attempt: 1/100
-- Previous failures for this step: 1
+- Attempt: 2/100
+- Previous failures for this step: 2
 
 ## Project Memory Summary:
-- Total validation attempts: 16
+- Total validation attempts: 17
 - Common issues encountered: Install Dependencies validation failure (persistent)
 - Known dependencies: @hookform/resolvers, @radix-ui/react-accordion, @radix-ui/react-alert-dialog, @radix-ui/react-aspect-ratio, @radix-ui/react-avatar, @radix-ui/react-checkbox, @radix-ui/react-collapsible, @radix-ui/react-context-menu, @radix-ui/react-dialog, @radix-ui/react-dropdown-menu
 - Missing dependencies: None
@@ -133,6 +215,7 @@ PROTECTED DIRECTORIES (DO NOT MODIFY):
 
 ## Previous Validation Failures for Frontend TypeScript Compilation:
 - 3:49:21 PM: 
+- 3:49:58 PM: 
 
 ## Your Task:
 1. **Analyze the Error**: Understand what specifically went wrong in the Frontend TypeScript Compilation step
